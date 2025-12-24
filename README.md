@@ -75,7 +75,7 @@ Contributions welcome! Please open an issue or submit a pull request.
 
 ## Related Packages
 
+- [embedded-swift-utilities](https://github.com/gnorium/embedded-swift-utilities) - Utilities for Embedded Swift
+- [web-apis](https://github.com/gnorium/web-apis) - Web API implementations for Swift WebAssembly
 - [web-builders](https://github.com/gnorium/web-builders) - HTML, CSS, JS, and SVG DSL builders
 - [web-types](https://github.com/gnorium/web-types) - Shared web types and design tokens
-- [web-apis](https://github.com/gnorium/web-apis) - Web API implementations for Swift WebAssembly
-- [embedded-swift-utilities](https://github.com/gnorium/embedded-swift-utilities) - Utilities for Embedded Swift
