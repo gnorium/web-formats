@@ -18,7 +18,7 @@ let package = Package(
         .library(name: "WAMFormat", targets: ["WAMFormat"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/gnorium/web-types", from: "1.0.0")
+        .package(url: "https://github.com/gnorium/web-types", branch: "main")
     ],
     targets: [
         .target(
