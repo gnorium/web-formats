@@ -1,5 +1,7 @@
 #if !os(WASI)
 
+import Foundation
+
 public enum JSONValue: JSON, Sendable {
 	case string(String)
 	case number(Double)
