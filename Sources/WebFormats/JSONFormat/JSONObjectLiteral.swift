@@ -1,5 +1,7 @@
 #if !os(WASI)
 
+import Foundation
+
 public struct JSONObjectLiteral: JSON, Sendable {
 	let dict: [String: JSONValue]
 

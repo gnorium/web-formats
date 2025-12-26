@@ -1,5 +1,6 @@
 #if !os(WASI)
 
+import Foundation
 import JSONFormat
 
 /// Type-safe dictionary for schema.org structured data

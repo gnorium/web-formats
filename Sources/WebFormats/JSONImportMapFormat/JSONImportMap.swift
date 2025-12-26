@@ -1,5 +1,6 @@
 #if !os(WASI)
 
+import Foundation
 import JSONFormat
 
 /// Import map for ES module resolution
