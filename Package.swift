@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 6.2
 
 import PackageDescription
 
@@ -26,11 +26,7 @@ let package = Package(
             dependencies: [],
             path: "Sources/WebFormats/JSONFormat",
             swiftSettings: [
-                .enableUpcomingFeature("BareSlashRegexLiterals"),
-                .enableUpcomingFeature("ConciseMagicFile"),
                 .enableUpcomingFeature("ExistentialAny"),
-                .enableUpcomingFeature("ForwardTrailingClosures"),
-                .enableUpcomingFeature("ImplicitOpenExistentials"),
                 .enableUpcomingFeature("StrictConcurrency")
             ]
         ),
@@ -39,11 +35,7 @@ let package = Package(
             dependencies: ["JSONFormat"],
             path: "Sources/WebFormats/JSONLDFormat",
             swiftSettings: [
-                .enableUpcomingFeature("BareSlashRegexLiterals"),
-                .enableUpcomingFeature("ConciseMagicFile"),
                 .enableUpcomingFeature("ExistentialAny"),
-                .enableUpcomingFeature("ForwardTrailingClosures"),
-                .enableUpcomingFeature("ImplicitOpenExistentials"),
                 .enableUpcomingFeature("StrictConcurrency")
             ]
         ),
@@ -52,11 +44,7 @@ let package = Package(
             dependencies: ["JSONFormat"],
             path: "Sources/WebFormats/JSONImportMapFormat",
             swiftSettings: [
-                .enableUpcomingFeature("BareSlashRegexLiterals"),
-                .enableUpcomingFeature("ConciseMagicFile"),
                 .enableUpcomingFeature("ExistentialAny"),
-                .enableUpcomingFeature("ForwardTrailingClosures"),
-                .enableUpcomingFeature("ImplicitOpenExistentials"),
                 .enableUpcomingFeature("StrictConcurrency")
             ]
         ),
@@ -67,11 +55,7 @@ let package = Package(
             ],
             path: "Sources/WebFormats/WAMFormat",
             swiftSettings: [
-                .enableUpcomingFeature("BareSlashRegexLiterals"),
-                .enableUpcomingFeature("ConciseMagicFile"),
                 .enableUpcomingFeature("ExistentialAny"),
-                .enableUpcomingFeature("ForwardTrailingClosures"),
-                .enableUpcomingFeature("ImplicitOpenExistentials"),
                 .enableUpcomingFeature("StrictConcurrency")
             ]
         ),
