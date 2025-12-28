@@ -1,6 +1,6 @@
 # WebFormats, as used in [gnorium.com](https://gnorium.com)
 
-Structured data format builders for Swift, enabling declarative construction of JSON, JSON-LD, import maps, and WebAssembly module formats.
+Structured data format builders for Swift, enabling declarative construction of JSON, JSON-LD, JSON import maps, and Web Application Manifest formats.
 
 ## Overview
 
@@ -11,7 +11,7 @@ WebFormats provides type-safe builders for common web data formats, allowing you
 - **JSON Format**: Type-safe JSON object and array construction
 - **JSON-LD Format**: Linked Data and schema.org markup
 - **JSON Import Map Format**: ES module import map generation
-- **WAM Format**: WebAssembly module format builders
+- **WAM Format**: Web Application Manifest format
 
 ## Installation
 
