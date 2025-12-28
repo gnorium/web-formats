@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "WebFormats",
+    name: "web-formats",
     platforms: [
         .macOS(.v14),
         .iOS(.v17),

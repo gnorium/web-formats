@@ -26,6 +26,8 @@ public enum JSONLDKey: Hashable, ExpressibleByStringLiteral {
 	case itemListElement
 	case position
 	case item
+	case sameAs
+	case jobTitle
 
 	// Custom string key
 	case custom(String)
@@ -54,6 +56,8 @@ public enum JSONLDKey: Hashable, ExpressibleByStringLiteral {
 		case .itemListElement: return "itemListElement"
 		case .position: return "position"
 		case .item: return "item"
+		case .sameAs: return "sameAs"
+		case .jobTitle: return "jobTitle"
 		case .custom(let str): return str
 		}
 	}
