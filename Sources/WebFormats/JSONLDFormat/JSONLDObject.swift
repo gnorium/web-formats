@@ -5,7 +5,7 @@ import JSONFormat
 
 /// Type-safe dictionary for schema.org structured data
 @dynamicMemberLookup
-public struct JSONLDObject: ExpressibleByDictionaryLiteral, JSON, @unchecked Sendable {
+public struct JSONLDObject: ExpressibleByDictionaryLiteral, JSONProtocol, @unchecked Sendable {
 	internal var properties: [String: Any]
 
 	public init(dictionaryLiteral elements: (JSONLDKey, Any)...) {

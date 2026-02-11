@@ -2,7 +2,7 @@
 
 import JSONFormat
 
-public protocol JSONLD: JSON {
+public protocol JSONLDProtocol: JSONProtocol {
 	var context: String? { get }
 	var type: String? { get }
 }

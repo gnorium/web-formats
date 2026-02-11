@@ -5,7 +5,7 @@ import JSONFormat
 
 /// Import map for ES module resolution
 /// Conforms to the Import Maps specification: https://github.com/WICG/import-maps
-public struct JSONImportMap: JSON, Sendable {
+public struct JSONImportMap: JSONProtocol, Sendable {
 	let imports: [String: String]
 
 	public init(imports: [String: String]) {
