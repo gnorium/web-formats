@@ -2,7 +2,7 @@
 
 import JSONFormat
 
-public protocol JSONLDProtocol: JSONProtocol {
+public protocol JSONLDRepresentable: JSONRepresentable {
 	var context: String? { get }
 	var type: String? { get }
 }

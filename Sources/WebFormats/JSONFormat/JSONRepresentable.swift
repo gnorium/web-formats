@@ -1,6 +1,6 @@
 #if !os(WASI)
 
-public protocol JSONProtocol: Sendable {
+public protocol JSONRepresentable: Sendable {
 	func encodeJSON() -> String
 }
 

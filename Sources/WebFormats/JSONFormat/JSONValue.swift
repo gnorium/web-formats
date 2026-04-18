@@ -2,7 +2,7 @@
 
 import Foundation
 
-public enum JSONValue: JSONProtocol, Sendable {
+public enum JSONValue: JSONRepresentable, Sendable {
 	case string(String)
 	case number(Double)
 	case bool(Bool)

@@ -2,7 +2,7 @@
 
 import Foundation
 
-public struct JSONObjectLiteral: JSONProtocol, Sendable {
+public struct JSONObjectLiteral: JSONRepresentable, Sendable {
 	let dict: [String: JSONValue]
 
 	public init(_ dict: [String: JSONValue]) {

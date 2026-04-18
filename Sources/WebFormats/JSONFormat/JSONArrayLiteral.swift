@@ -2,7 +2,7 @@
 
 import Foundation
 
-public struct JSONArrayLiteral: JSONProtocol, Sendable {
+public struct JSONArrayLiteral: JSONRepresentable, Sendable {
 	let array: [JSONValue]
 
 	public init(_ array: [JSONValue]) {

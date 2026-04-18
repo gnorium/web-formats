@@ -42,5 +42,4 @@ public enum JSONLDProperty: String {
 	case height
 }
 
-
 #endif
