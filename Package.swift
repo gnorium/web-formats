@@ -18,45 +18,67 @@ let package = Package(
         .library(name: "WAMFormat", targets: ["WAMFormat"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/gnorium/web-types", branch: "main")
+        .package(url: "https://github.com/gnorium/web-types", branch: "main"),
+        .package(url: "https://github.com/gnorium/embedded-swift-utilities", branch: "main")
     ],
     targets: [
         .target(
             name: "JSONFormat",
-            dependencies: [],
+            dependencies: [
+                .product(name: "EmbeddedSwiftUtilities", package: "embedded-swift-utilities")
+            ],
             path: "Sources/WebFormats/JSONFormat",
             swiftSettings: [
+                .enableExperimentalFeature("Embedded", .when(platforms: [.wasi])),
                 .enableUpcomingFeature("ExistentialAny"),
-                .enableUpcomingFeature("StrictConcurrency")
+                .enableUpcomingFeature("StrictConcurrency"),
+                .define("CLIENT", .when(platforms: [.wasi])),
+                .define("SERVER", .when(platforms: [.macOS, .linux, .windows]))
             ]
         ),
         .target(
             name: "JSONLDFormat",
-            dependencies: ["JSONFormat"],
+            dependencies: [
+                "JSONFormat",
+                .product(name: "EmbeddedSwiftUtilities", package: "embedded-swift-utilities")
+            ],
             path: "Sources/WebFormats/JSONLDFormat",
             swiftSettings: [
+                .enableExperimentalFeature("Embedded", .when(platforms: [.wasi])),
                 .enableUpcomingFeature("ExistentialAny"),
-                .enableUpcomingFeature("StrictConcurrency")
+                .enableUpcomingFeature("StrictConcurrency"),
+                .define("CLIENT", .when(platforms: [.wasi])),
+                .define("SERVER", .when(platforms: [.macOS, .linux, .windows]))
             ]
         ),
         .target(
             name: "JSONImportMapFormat",
-            dependencies: ["JSONFormat"],
+            dependencies: [
+                "JSONFormat",
+                .product(name: "EmbeddedSwiftUtilities", package: "embedded-swift-utilities")
+            ],
             path: "Sources/WebFormats/JSONImportMapFormat",
             swiftSettings: [
+                .enableExperimentalFeature("Embedded", .when(platforms: [.wasi])),
                 .enableUpcomingFeature("ExistentialAny"),
-                .enableUpcomingFeature("StrictConcurrency")
+                .enableUpcomingFeature("StrictConcurrency"),
+                .define("CLIENT", .when(platforms: [.wasi])),
+                .define("SERVER", .when(platforms: [.macOS, .linux, .windows]))
             ]
         ),
         .target(
             name: "WAMFormat",
             dependencies: [
-                .product(name: "WebTypes", package: "web-types")
+                .product(name: "WebTypes", package: "web-types"),
+                .product(name: "EmbeddedSwiftUtilities", package: "embedded-swift-utilities")
             ],
             path: "Sources/WebFormats/WAMFormat",
             swiftSettings: [
+                .enableExperimentalFeature("Embedded", .when(platforms: [.wasi])),
                 .enableUpcomingFeature("ExistentialAny"),
-                .enableUpcomingFeature("StrictConcurrency")
+                .enableUpcomingFeature("StrictConcurrency"),
+                .define("CLIENT", .when(platforms: [.wasi])),
+                .define("SERVER", .when(platforms: [.macOS, .linux, .windows]))
             ]
         ),
         .testTarget(

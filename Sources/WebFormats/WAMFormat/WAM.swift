@@ -1,4 +1,10 @@
-#if !os(WASI)
+#if CLIENT
+
+import EmbeddedSwiftUtilities
+
+#endif
+
+#if SERVER
 
 import Foundation
 import WebTypes

@@ -1,4 +1,10 @@
-#if !os(WASI)
+#if CLIENT
+
+import EmbeddedSwiftUtilities
+
+#endif
+
+#if SERVER
 
 public func formatJSON(_ json: String, indent: Int = 0) -> String {
 	var result = ""

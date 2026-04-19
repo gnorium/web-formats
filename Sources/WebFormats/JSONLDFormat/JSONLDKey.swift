@@ -1,4 +1,4 @@
-#if !os(WASI)
+#if SERVER
 
 public enum JSONLDKey: Hashable, ExpressibleByStringLiteral {
 	// Meta keys

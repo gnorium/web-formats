@@ -1,4 +1,4 @@
-#if !os(WASI)
+#if SERVER
 
 public enum JSONLDProperty: String {
 	// Common properties

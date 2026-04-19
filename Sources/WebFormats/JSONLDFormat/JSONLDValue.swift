@@ -1,4 +1,4 @@
-#if !os(WASI)
+#if SERVER
 
 public struct JSONLDValue: ExpressibleByNilLiteral {
 	let value: String
