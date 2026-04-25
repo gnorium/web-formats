@@ -50,7 +50,7 @@ let jsonLD = script {
         .type: "WebSite",
         .name: "Gnorium",
         .url: "https://gnorium.com"
-    ] as JSONLDObject
+    ] as JSONLD
 }.type("application/ld+json")
 
 // Build import map for ES modules

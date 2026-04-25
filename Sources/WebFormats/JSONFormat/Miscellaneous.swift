@@ -1,67 +1,60 @@
-#if CLIENT
-
 import EmbeddedSwiftUtilities
 
-#endif
+public func prettifyJSON(_ json: String, indent: Int = 0) -> String {
+  var result = ""
+  var currentIndent = indent
+  var inString = false
+  var escaped = false
 
-#if SERVER
+  // Using utf8 view to be 100% safe from Unicode normalization triggers
+  for byte in json.utf8 {
+    if escaped {
+      result = "\(result)\(UnicodeScalar(byte))"
+      escaped = false
+      continue
+    }
 
-public func formatJSON(_ json: String, indent: Int = 0) -> String {
-	var result = ""
-	var currentIndent = indent
-	var inString = false
-	var escaped = false
+    if byte == 0x5C {  // \
+      escaped = true
+      result = "\(result)\\"
+      continue
+    }
 
-	for char in json {
-		if escaped {
-			result.append(char)
-			escaped = false
-			continue
-		}
+    if byte == 0x22 {  // "
+      inString.toggle()
+      result = "\(result)\""
+      continue
+    }
 
-		if char == "\\" {
-			escaped = true
-			result.append(char)
-			continue
-		}
+    if inString {
+      result = "\(result)\(UnicodeScalar(byte))"
+      continue
+    }
 
-		if char == "\"" {
-			inString.toggle()
-			result.append(char)
-			continue
-		}
+    switch byte {
+    case 0x7B, 0x5B:  // { [
+      result = "\(result)\(UnicodeScalar(byte))\n"
+      currentIndent += 1
+      for _ in 0..<currentIndent { result = "\(result)  " }
+    case 0x7D, 0x5D:  // } ]
+      result = "\(result)\n"
+      currentIndent -= 1
+      for _ in 0..<currentIndent { result = "\(result)  " }
+      result = "\(result)\(UnicodeScalar(byte))"
+    case 0x2C:  // ,
+      result = "\(result),\n"
+      for _ in 0..<currentIndent { result = "\(result)  " }
+    case 0x3A:  // :
+      result = "\(result): "
+    case 0x20:  // space
+      if !result.isEmpty && result.utf8.last == 0x20 {
+        continue
+      }
+      result = "\(result) "
+    default:
+      result = "\(result)\(UnicodeScalar(byte))"
+    }
+  }
 
-		if inString {
-			result.append(char)
-			continue
-		}
-
-		switch char {
-		case "{", "[":
-			result.append(char)
-			result.append("\n")
-			currentIndent += 1
-			result.append(String(repeating: "  ", count: currentIndent))
-		case "}", "]":
-			result.append("\n")
-			currentIndent -= 1
-			result.append(String(repeating: "  ", count: currentIndent))
-			result.append(char)
-		case ",":
-			result.append(char)
-			result.append("\n")
-			result.append(String(repeating: "  ", count: currentIndent))
-		case ":":
-			result.append(char)
-			result.append(" ")
-		case " " where result.last == " ":
-			continue
-		default:
-			result.append(char)
-		}
-	}
-
-	return result
+  return result
 }
-
-#endif
