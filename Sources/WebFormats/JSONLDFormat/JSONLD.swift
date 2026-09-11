@@ -9,7 +9,7 @@ public struct JSONLD: ExpressibleByDictionaryLiteral, JSONLDFormattable, @unchec
   public var context: String? {
     if case .object(let pairs) = properties {
       for (key, val) in pairs {
-        if key == "@context", case .string(let str) = val { return str }
+        if stringEquals(key, "@context"), case .string(let str) = val { return str }
       }
     }
     return nil
@@ -18,7 +18,7 @@ public struct JSONLD: ExpressibleByDictionaryLiteral, JSONLDFormattable, @unchec
   public var type: String? {
     if case .object(let pairs) = properties {
       for (key, val) in pairs {
-        if key == "@type", case .string(let str) = val { return str }
+        if stringEquals(key, "@type"), case .string(let str) = val { return str }
       }
     }
     return nil
@@ -35,7 +35,7 @@ public struct JSONLD: ExpressibleByDictionaryLiteral, JSONLDFormattable, @unchec
   public subscript(key: JSONLDKey) -> JSON? {
     if case .object(let pairs) = properties {
       for (k, v) in pairs {
-        if k == key.rawValue { return v }
+        if stringEquals(k, key.rawValue) { return v }
       }
     }
     return nil
@@ -44,7 +44,7 @@ public struct JSONLD: ExpressibleByDictionaryLiteral, JSONLDFormattable, @unchec
   public subscript(dynamicMember key: String) -> JSON? {
     if case .object(let pairs) = properties {
       for (k, v) in pairs {
-        if k == key { return v }
+        if stringEquals(k, key) { return v }
       }
     }
     return nil

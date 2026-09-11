@@ -1,3 +1,5 @@
+import EmbeddedSwiftUtilities
+
 public enum JSONLDKey: Hashable, ExpressibleByStringLiteral, Sendable {
   // Meta keys
   case context
@@ -65,10 +67,13 @@ public enum JSONLDKey: Hashable, ExpressibleByStringLiteral, Sendable {
   }
 
   public func hash(into hasher: inout Hasher) {
-    hasher.combine(rawValue)
+    // Embedded-safe: hash UTF-8 bytes, not String normalizedHash
+    for b in Array(rawValue.utf8) {
+      hasher.combine(b)
+    }
   }
 
   public static func == (lhs: JSONLDKey, rhs: JSONLDKey) -> Bool {
-    lhs.rawValue == rhs.rawValue
+    stringEquals(lhs.rawValue, rhs.rawValue)
   }
 }
